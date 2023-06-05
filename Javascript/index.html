@@ -16,6 +16,21 @@
 
         <button type="button" onclick="addUser()"> Create User</button>
     </form>
+    <h2 style="text-align: center;">Users Table</h2>
+    <table border="1" style="width: 600px; margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
     <script>
 
         // 1. Create a User (POST)
@@ -35,12 +50,54 @@
                     console.log("User Added Successfully !!")
                 }
             }
-            createUser.open("POST","https://jsonplaceholder.typicode.com/users/");
+            createUser.open("POST","http://localhost:3001/users");
             createUser.setRequestHeader("Content-Type","Application/json");
             createUser.send(JSON.stringify(user))
             // fetch 
         }
         // 2. Read a User (GET)
+
+        function readUsers(){
+            var getALLUsers = new XMLHttpRequest()
+            getALLUsers.onreadystatechange = function(){
+                if(getALLUsers.readyState == 4 && getALLUsers.status ==200){
+                    // console.log(getALLUsers.response.length)
+                    // console.log("ALl Users : ",JSON.parse(getALLUsers.response))
+                    displayUsersInTable(JSON.parse(getALLUsers.response))
+                }
+            }
+            getALLUsers.open("GET","http://localhost:3001/users")
+            getALLUsers.send()
+        }
+
+        function displayUsersInTable(allUsers){
+            console.log("In Side displayUsersInTable : ",allUsers)
+            allUsers.forEach((user)=>{
+                // Since i Have 3 Objects Inside An Array , The Call Back function will be excuted 3 Times
+                var myTr = document.createElement("tr") ;
+                console.log(user)
+                for(a in user){
+                    var myTd = document.createElement("td")
+                    myTd.innerHTML = user[a]
+                    myTr.appendChild(myTd)
+                }
+                var editTd = document.createElement("td");
+                var editBtn = document.createElement("button");
+                editBtn.innerHTML = "Edit User";
+                editTd.appendChild(editBtn);
+                myTr.appendChild(editTd)
+
+                var deleteTd = document.createElement("td");
+                var deleteBtn = document.createElement("button");
+                deleteBtn.innerHTML = "Delete User"
+                deleteTd.appendChild(deleteBtn)
+                myTr.appendChild(deleteTd)
+
+
+                document.querySelector("tbody").appendChild(myTr)
+            })
+        }
+        readUsers()
         // 3. Update a User (PUT)
         // 4. Delete a User (DELETE)
     </script>
