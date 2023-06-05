@@ -14,7 +14,8 @@
         <label for="lname">Last Name : </label>
         <input type="text" name="" id="lname"> <br>
 
-        <button type="button" onclick="addUser()"> Create User</button>
+        <button type="button" onclick="addUser()" id="addUserBtn"> Create User</button>
+        <button type="button" onclick="updateUser()" style="display: none;" id="updateBtn"> Update User</button>
     </form>
     <h2 style="text-align: center;">Users Table</h2>
     <table border="1" style="width: 600px; margin: 0 auto;">
@@ -34,7 +35,7 @@
     <script>
 
         // 1. Create a User (POST)
-
+        var allUsers = []
         function addUser(){
             var user = {
                 fname:document.getElementById("fname").value,
@@ -63,16 +64,18 @@
                 if(getALLUsers.readyState == 4 && getALLUsers.status ==200){
                     // console.log(getALLUsers.response.length)
                     // console.log("ALl Users : ",JSON.parse(getALLUsers.response))
-                    displayUsersInTable(JSON.parse(getALLUsers.response))
+                    allUsers=JSON.parse(getALLUsers.response)
+                    displayUsersInTable()
                 }
             }
             getALLUsers.open("GET","http://localhost:3001/users")
             getALLUsers.send()
         }
 
-        function displayUsersInTable(allUsers){
+        function displayUsersInTable(){
             console.log("In Side displayUsersInTable : ",allUsers)
-            allUsers.forEach((user)=>{
+            document.querySelector("tbody").innerHTML = ""
+            allUsers.forEach((user,i)=>{
                 // Since i Have 3 Objects Inside An Array , The Call Back function will be excuted 3 Times
                 var myTr = document.createElement("tr") ;
                 console.log(user)
@@ -84,22 +87,76 @@
                 var editTd = document.createElement("td");
                 var editBtn = document.createElement("button");
                 editBtn.innerHTML = "Edit User";
+                editBtn.setAttribute("onclick","handleEdit("+i+")")
                 editTd.appendChild(editBtn);
                 myTr.appendChild(editTd)
 
                 var deleteTd = document.createElement("td");
                 var deleteBtn = document.createElement("button");
                 deleteBtn.innerHTML = "Delete User"
+                deleteBtn.setAttribute("onclick","handleDelete("+i+")")
                 deleteTd.appendChild(deleteBtn)
                 myTr.appendChild(deleteTd)
-
 
                 document.querySelector("tbody").appendChild(myTr)
             })
         }
         readUsers()
         // 3. Update a User (PUT)
+
+        function handleEdit(i){
+            gIndex = i;
+            console.log(allUsers[i])
+            for (a in allUsers[i]){
+                if(a !== "id"){
+                    document.getElementById(a).value = allUsers[i][a]
+                }
+            }
+            document.getElementById("updateBtn").style.display="block"
+            document.getElementById("addUserBtn").style.display="none"
+        }
+
+        function updateUser(){
+            var user = {
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value
+            }
+
+            var createUser = new XMLHttpRequest()
+
+            createUser.onreadystatechange = function(){
+                if(createUser.status == 201 && createUser.readyState == 4){
+                    console.log("User Added Successfully !!")
+                    clearForm()
+
+                }
+            }
+            createUser.open("PUT","http://localhost:3001/users/"+allUsers[gIndex].id);
+            createUser.setRequestHeader("Content-Type","Application/json");
+            createUser.send(JSON.stringify(user))
+        }
+        function clearForm(){
+            document.getElementById("fname").value="";
+            document.getElementById("lname").value="";
+            
+            document.getElementById("updateBtn").style.display="none"
+            document.getElementById("addUserBtn").style.display="block"
+        }
         // 4. Delete a User (DELETE)
+
+
+        function handleDelete(i){
+            
+            console.log(allUsers[i])
+            var deleteUser = new XMLHttpRequest();
+            deleteUser.onreadystatechange = function (){
+                if(deleteUser.readyState == 4 && deleteUser.status == 200){
+                    readUsers()
+                }
+            }
+            deleteUser.open("DELETE","http://localhost:3001/users/"+allUsers[i].id);
+            deleteUser.send()
+        }
     </script>
 </body>
 </html>
