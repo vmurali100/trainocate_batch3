@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="fname">First Name : </label>
+        <input type="text" name="" id="fname"> <br>
+
+        <label for="lname">Last Name : </label>
+        <input type="text" name="" id="lname"> <br>
+
+        <button type="button" onclick="addUser()"> Create User</button>
+    </form>
+    <script>
+
+        // 1. Create a User (POST)
+
+        function addUser(){
+            var user = {
+                fname:document.getElementById("fname").value,
+                lname:document.getElementById("lname").value
+            }
+            console.log("addUser() Called !!")
+            // XML HTTPRequest 
+            // for Creating or adding a record , the Status code has to be 201 .
+            var createUser = new XMLHttpRequest()
+
+            createUser.onreadystatechange = function(){
+                if(createUser.status == 201 && createUser.readyState == 4){
+                    console.log("User Added Successfully !!")
+                }
+            }
+            createUser.open("POST","https://jsonplaceholder.typicode.com/users/");
+            createUser.setRequestHeader("Content-Type","Application/json");
+            createUser.send(JSON.stringify(user))
+            // fetch 
+        }
+        // 2. Read a User (GET)
+        // 3. Update a User (PUT)
+        // 4. Delete a User (DELETE)
+    </script>
+</body>
+</html>
