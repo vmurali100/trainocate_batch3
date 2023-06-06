@@ -1,0 +1,13 @@
+#main{
+    background: lightgray; 
+    padding: 10px; 
+    display: flex;
+    justify-content: space-around ;
+}
+.box{
+    background: aqua;
+    height: 100px;
+    padding: 20px; 
+    width: 600px;
+    text-align: center;
+}
