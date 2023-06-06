@@ -1,0 +1,5 @@
+<h2 style="text-align: center;">Welcome to Angular !!</h2>
+<h3>Message Received From Child : {{msgFromChild}}</h3>
+<hr>
+
+<app-user [recievemessage]="myName" (sendMessageToParent)="receiveMessage($event)"></app-user>
