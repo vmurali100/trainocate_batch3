@@ -1,0 +1,13 @@
+
+<form #userForm="ngForm">
+    <label for="fname">First Name : </label>
+    <input type="text" name="fname" [(ngModel)]="user.fname"> <br>
+
+    <label for="lname">Last Name : </label>
+    <input type="text" name="lname" [(ngModel)] =  "user.lname"> <br>
+
+    <button type="button" (click)="addUser(userForm)" *ngIf="!isEdit"> Create User</button>
+    <button type="button" (click)="handleUpdate()" *ngIf="isEdit"> Update User</button>
+</form>
+<!-- <h2>My Name is : {{firstName}}</h2> -->
+<app-users-table [usersDetails] = "allUsers" (editUser)="handleEdit($event)"></app-users-table>

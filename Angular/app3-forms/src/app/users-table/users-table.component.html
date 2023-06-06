@@ -1,0 +1,32 @@
+<!-- <p>users-table works!</p>
+
+<ul>
+    <li *ngFor="let user of users">{{user}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let val of converObjectInToArray(myPerson)">{{val}}</li>
+</ul> -->
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Edit User</th>
+            <th>Delete User</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usr of usersDetails; let i = index">
+            <td>{{usr.fname}}</td>
+            <td>{{usr.lname}}</td>
+            <td>
+                <button (click)="editUserDetails(usr,i)">Edit User</button>
+            </td>
+            <td>
+                <button>Delete User</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
