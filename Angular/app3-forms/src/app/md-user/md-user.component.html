@@ -1,0 +1,48 @@
+<form [formGroup]="userForm">
+  <label for="fname">First Name : </label>
+  <input
+    type="text"
+    name="fname"
+    formControlName="fname"
+    [ngStyle]="{
+      'background-color':
+        userForm.controls['fname'].invalid &&
+        !userForm.controls['fname'].pristine
+          ? 'red'
+          : ''
+    }"
+  />
+  <span
+    *ngIf="
+      userForm.controls['fname'].invalid && !userForm.controls['fname'].pristine
+    "
+    style="color: red"
+    >Please enter minimum 6 Characters !!</span
+  >
+  <br />
+  <label for="lname">Last Name : </label>
+  <input type="text" name="lname" formControlName="lname" /> <br />
+
+  <button
+    type="button"
+    (click)="addUser()"
+    *ngIf="!isEdit"
+    [disabled]="userForm.invalid"
+  >
+    Create User
+  </button>
+  <button type="button" (click)="handleUpdate()" *ngIf="isEdit">
+    Update User
+  </button>
+</form>
+<p>Is Form valid ? : {{ userForm.valid }}</p>
+<p>Is Form Touched ? {{ userForm.touched }}</p>
+<p>Is Form Prestine ? {{ userForm.pristine }}</p>
+<p>First Name is Valid ? : {{ userForm.controls["fname"].valid }}</p>
+
+<hr />
+<app-users-table
+  [usersDetails]="allUsers"
+  (editUser)="handleEdit($event)"
+  (deleteUser)="handleDelete($event)"
+></app-users-table>

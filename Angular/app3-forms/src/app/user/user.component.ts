@@ -35,7 +35,9 @@ export class UserComponent {
     this.user = {...usr};
     this.isEdit = true;
   }
-  handleDelete(){}
+  handleDelete(usr:any){
+    this.allUsers = this.allUsers.filter((us:any)=> us.fname !== usr.fname)
+  }
   handleUpdate(){
     this.allUsers[this.user['index']]= this.user
     this.clearForm()
