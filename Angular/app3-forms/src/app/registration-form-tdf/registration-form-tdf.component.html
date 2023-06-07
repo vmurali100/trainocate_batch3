@@ -65,6 +65,15 @@
     </div>
   </div>
   <div>
-    <button type="submit">Register</button>
+    <button type="submit">
+      {{ isEdit ? "Update User" : "Add User" }}
+    </button>
   </div>
 </form>
+
+<hr />
+<app-users-table
+  [usersDetails]="allUsers"
+  (deleteUser)="handleDelete($event)"
+  (editUser)="handleEdit($event)"
+></app-users-table>

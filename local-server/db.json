@@ -2,28 +2,102 @@
   "users": [
     {
       "fname": "Murali",
-      "lname": "Kumar",
-      "id": 1
-    },
-    {
-      "fname": "Ram",
-      "lname": "VEEE",
-      "id": 2
-    },
-    {
-      "fname": "Ram",
-      "lname": "Krishna",
-      "id": 3
+      "lname": "V MK",
+      "email": "vmurali100@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "subjects": [
+        "Math",
+        "History"
+      ],
+      "id": 1,
+      "index": 0
     },
     {
       "fname": "vmr",
       "lname": "infotech",
-      "id": 4
+      "email": "vmrinfotech25@gmail.com",
+      "password": "1122",
+      "confirmPassword": "1122",
+      "subjects": [
+        "Math",
+        "History"
+      ],
+      "id": 2
     },
     {
-      "fname": "Kiran",
-      "lname": "Kumar",
-      "id": 5
+      "fname": "vmr ABCD",
+      "lname": "infotech",
+      "email": "vmrinfotech25@gmail.com",
+      "password": "3232",
+      "confirmPassword": "2323",
+      "subjects": [
+        "English",
+        "Science"
+      ],
+      "id": 3
+    },
+    {
+      "fname": "Murali 123",
+      "lname": "V",
+      "email": "vmurali100@gmail.com",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "subjects": [
+        "Science",
+        "English"
+      ],
+      "id": 4,
+      "index": 3
+    },
+    {
+      "fname": "Murali 1434",
+      "lname": "V",
+      "email": "vmrinfotech25@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "subjects": [
+        "English"
+      ],
+      "id": 5,
+      "index": 4
+    },
+    {
+      "fname": "Murali 111",
+      "lname": "V",
+      "email": "ram@gmail.com",
+      "password": "11",
+      "confirmPassword": "",
+      "subjects": [
+        "History",
+        "Math"
+      ],
+      "id": 6
+    },
+    {
+      "fname": "Murali 112233",
+      "lname": "VKL",
+      "email": "vmurali100@gmail.com",
+      "password": "123",
+      "confirmPassword": "",
+      "subjects": [
+        "Science",
+        "English"
+      ],
+      "id": 7,
+      "index": 6
+    },
+    {
+      "fname": "vmr",
+      "lname": "infotech",
+      "email": "vmrinfotech25@gmail.com",
+      "password": "ss",
+      "confirmPassword": "",
+      "subjects": [
+        "Science",
+        "English"
+      ],
+      "id": 8
     }
   ]
 }

@@ -9,6 +9,7 @@ export class UsersTableComponent {
   @Input() usersDetails: any = [];
   @Output() editUser = new EventEmitter();
   @Output() deleteUser = new EventEmitter();
+  @Input() dynamicTableFields = []
   editUserDetails(usr:any,i:number){
     usr['index'] = i
     this.editUser.emit(usr)
