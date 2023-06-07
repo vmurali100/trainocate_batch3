@@ -1,0 +1,29 @@
+<!-- registration-form.component.html -->
+<form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
+    <div>
+      <label for="fname">First Name:</label>
+      <input type="text" id="fname" formControlName="fname">
+    </div>
+    <div>
+      <label for="lname">Last Name:</label>
+      <input type="text" id="lname" formControlName="lname">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email">
+      <div *ngIf="registrationForm.get('email')?.hasError('required') && registrationForm.get('email')?.touched">Email is required.</div>
+      <div *ngIf="registrationForm.get('email')?.hasError('email') && registrationForm.get('email')?.touched">Invalid email format.</div>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password">
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword">
+    </div>
+    <div>
+      <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+    </div>
+  </form>
+  

@@ -1,0 +1,70 @@
+<!-- registration-form.component.html -->
+<form (ngSubmit)="submitForm()">
+  <div>
+    <label for="fname">First Name:</label>
+    <input
+      type="text"
+      id="fname"
+      name="fname"
+      [(ngModel)]="formData.fname"
+      required
+    />
+  </div>
+  <div>
+    <label for="lname">Last Name:</label>
+    <input
+      type="text"
+      id="lname"
+      name="lname"
+      [(ngModel)]="formData.lname"
+      required
+    />
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="formData.email"
+      required
+    />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="formData.password"
+      required
+    />
+  </div>
+  <div>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input
+      type="password"
+      id="confirmPassword"
+      name="confirmPassword"
+      [(ngModel)]="formData.confirmPassword"
+      required
+    />
+  </div>
+  <div>
+    <label>Subjects:</label>
+    <div *ngFor="let subject of subjects" class="subject-checkbox">
+      <input
+        type="checkbox"
+        name="subjects"
+        [value]="subject"
+        [checked]="formData.subjects.includes(subject)"
+        (change)="updateSubjects($event, subject)"
+      />
+
+      <label>{{ subject }}</label>
+    </div>
+  </div>
+  <div>
+    <button type="submit">Register</button>
+  </div>
+</form>
