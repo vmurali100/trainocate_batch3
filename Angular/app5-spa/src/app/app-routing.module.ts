@@ -6,8 +6,10 @@ import { ChennaiComponent } from './chennai/chennai.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { GindiComponent } from './gindi/gindi.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactsComponent },
   {

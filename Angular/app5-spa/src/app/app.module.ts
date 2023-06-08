@@ -9,6 +9,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { ChennaiComponent } from './chennai/chennai.component';
 import { GindiComponent } from './gindi/gindi.component';
 import { AreaDetailsComponent } from './area-details/area-details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AreaDetailsComponent } from './area-details/area-details.component';
     GalleryComponent,
     ChennaiComponent,
     GindiComponent,
-    AreaDetailsComponent
+    AreaDetailsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
