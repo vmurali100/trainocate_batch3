@@ -1,0 +1,45 @@
+<!-- <table border="1">
+    <thead>
+        <tr *ngIf="tableDetails.length > 0">
+            <th *ngFor="let val of convertTableRow(tableDetails[0],true)">{{val}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of tableDetails">
+            <td *ngFor="let val of convertTableRow(row,false)">{{val}}</td>
+        </tr>
+    </tbody>
+</table> -->
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Telephone</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Zip</th>
+      <th>State</th>
+      <th>Date</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obj of tableDetails | random: userSearchInput">
+        <td>{{obj['fname']}}</td>
+        <td>{{obj['lname'] }}</td>
+        <td>{{obj['tel'] | uppercase}}</td>
+        <td>{{obj['address']}}</td>
+        <td>{{obj['city'] }}</td>
+        <td>{{obj['zip'] | currency : 'INR'}}</td>
+        <td>{{obj['state'] }}</td>
+        <td>{{obj['date'] | date: 'dd/MM/yyyy'}}</td>
+    </tr>
+  </tbody>
+</table>
+<img
+  *ngIf="tableDetails.length == 0"
+  src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif"
+  alt=""
+/>

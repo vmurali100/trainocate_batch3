@@ -1,0 +1,7 @@
+<form #userForm="ngForm">
+    <input type="text" name="userSearch" [(ngModel)]="userSearch">
+</form>
+<!-- <app-data-table [tableDetails]="famousQuotes"></app-data-table> -->
+<!-- <app-data-table [tableDetails]="exchangeDetails"></app-data-table> -->
+
+<app-data-table [tableDetails]="randomData" [userSearchInput]="userSearch"></app-data-table>
