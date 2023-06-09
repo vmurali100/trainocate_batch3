@@ -1,0 +1,7 @@
+<p>lifecycle-a works!</p>
+<button (click)="incrementCount()">
+    Change Value 
+</button>
+<button (click)="hideCount()">Hide Count</button>
+<hr>
+<app-lifecycle-b [myCount]="count" *ngIf="isShowCount"></app-lifecycle-b>
